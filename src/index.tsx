@@ -1,12 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react"
+import ReactDOM from "react-dom"
+import "./index.css"
+import App from "./App"
+import reportWebVitals from "./reportWebVitals"
+// @ts-ignore
+import uuid4 from "uuid4"
+import { createInstance, HackleProvider } from "@hackler/react-sdk"
+
+const user = { id: uuid4() }
+const hackleClient = createInstance("YOUR_BROWSER_KEY")
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <HackleProvider hackleClient={hackleClient} user={user}>
+      <App />
+    </HackleProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
